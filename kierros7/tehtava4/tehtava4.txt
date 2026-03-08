@@ -1,0 +1,11 @@
+You can't use
+Error_code Stack :: push(Stack_entry item)
+	{
+		Node new_top(item, top_node);
+		top_node = new_top;
+		return success;
+	}
+method, for multiple reasons.
+Firstly, the types are mismatched Node* != Node
+Secondly, after transfering contents to top node, it ends up pointing at a destroyed object.
+This could cause a dangling pointer or undefined behavior. 
